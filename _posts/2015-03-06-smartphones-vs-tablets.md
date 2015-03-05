@@ -224,12 +224,12 @@ Thus, I used screen sizes in conjunction with dimensions for labeling the device
 device_class = None
 if total_area >= 160.0:
     device_class = 'Tablet'
-elif total_area &lt; 160.0:
+elif total_area < 160.0:
     device_class = 'Phone'
 if 'lines' in screen_size:
     device_class = 'Phone'
 elif 'inches' in screen_size:
-    if float(screen_size.split()[0]) &lt; 6.0:
+    if float(screen_size.split()[0]) < 6.0:
         device_class = 'Phone'
 ```
 
