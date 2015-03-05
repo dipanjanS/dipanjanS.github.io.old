@@ -39,17 +39,17 @@ Once the project is created, you will be automatically re-directed to the dashbo
 <a href="http://i.imgur.com/N74FuY0.png" target="_blank"><img src="http://i.imgur.com/N74FuY0.png"></img></a>
 
 Now, we will create a new API key for public API access. For this, go to the `Credentials` section and click on `Create new key` and choose the `Server key` option and create a new API key which is shown in the snapshot below (click to zoom the image).
-<br/>
+
 <a href="http://i.imgur.com/iVrTksz.png" target="_blank"><img src="http://i.imgur.com/iVrTksz.png"></img></a>
-<br/><br/>
+
 We will be using some Python libraries so open up your terminal or command prompt and install the following necessary libraries if you don't have them.
-<pre><code>
+
+```sh
 [root@dip]#  pip install google-api-python-client
 [root@dip]#  pip install pandas
-</code></pre>
-<br/>
-Now that the initial setup is complete, we can start writing some code! Head over to your favorite Python IDE or console and use the following code segment to build a YouTube resource object.
+```
 
+Now that the initial setup is complete, we can start writing some code! Head over to your favorite Python IDE or console and use the following code segment to build a YouTube resource object.
 
 ```python
 from apiclient.discovery import build
@@ -63,10 +63,9 @@ YOUTUBE_API_VERSION = "v3"
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
 ```
 
- 
 Once this is complete, we will be using this YouTube resource object to search for videos with the <code>android</code> keyword. For this we will be using the <a href="https://developers.google.com/youtube/v3/docs/search/list">search method</a> to query YouTube and after getting back a list of results, we will be storing each result to its appropriate list, and then display the lists of matching videos, channels, and playlists using the following code segment.
 
-<pre><code>
+```python
 search_response = youtube.search().list(
     q="android",
     part="id,snippet",
@@ -88,14 +87,14 @@ for search_result in search_response.get("items", []):
         playlists.append("%s (%s)" % (search_result["snippet"]["title"],
                                     search_result["id"]["playlistId"]))
 
-</code></pre>
-<br/> 
-Based on the query I ran, most of the results seemed to be videos. The output I obtained is shown in the snapshot below.
-<img src="http://i.imgur.com/FefZGxb.png"></img>
-<br/><br/>
-Since the playlists and channels we obtained are very less in number, I decided to go ahead and analyze the videos obtained. For that, we create a <code>dict</code> of video identifiers and video names. Then we pass a query to the YouTube API's <a href="https://developers.google.com/youtube/v3/docs/videos/list">videos method</a>, to get the relevant statistics for each video.
+```
 
-<pre><code>
+Based on the query I ran, most of the results seemed to be videos. The output I obtained is shown in the snapshot below.
+![](http://i.imgur.com/FefZGxb.png)
+
+Since the playlists and channels we obtained are very less in number, I decided to go ahead and analyze the videos obtained. For that, we create a `dict` of video identifiers and video names. Then we pass a query to the YouTube API's [videos method](https://developers.google.com/youtube/v3/docs/videos/list), to get the relevant statistics for each video.
+
+```python
 videos = {}
 
 for search_result in search_response.get("items", []):
@@ -108,14 +107,14 @@ video_list_stats = youtube.videos().list(
  id=video_ids_list,
  part='id,statistics'
 ).execute()
-</code></pre>
+```
 
-I know you must be interested by now to see what kind of data is present in <code>video_list_stats</code>. So for that, I will show you the relevant statistics obtained for a video from the API in the following snapshot.
-<img src="http://i.imgur.com/FVYI6b1.png"></img>
-<br/><br/>
-Now we will be using <code>pandas</code> to analyze this data. For that, the following code segment is used, to get this data into a <a href="http://pandas.pydata.org/pandas-docs/dev/generated/pandas.DataFrame.html">pandas data frame</a>.
+I know you must be interested by now to see what kind of data is present in `video_list_stats`. So for that, I will show you the relevant statistics obtained for a video from the API in the following snapshot.
+![](http://i.imgur.com/FVYI6b1.png)
 
-<pre><code>
+Now we will be using `pandas` to analyze this data. For that, the following code segment is used, to get this data into a [pandas data frame](http://pandas.pydata.org/pandas-docs/dev/generated/pandas.DataFrame.html).
+
+```python
 df = []
 
 for item in videos_list_stats['items']:
@@ -124,17 +123,19 @@ for item in videos_list_stats['items']:
     df.append(video_dict)
 
 df = pd.DataFrame.from_dict(df)
-</code></pre>
+```
 
-Now, we can view the contents of this data frame. I will be showing the output of the first few rows with the relevant columns in the snapshot below. I have considered only the important data points which include <code>viewCount, likeCount, dislikeCount, commentCount</code> indicating the number of views, likes, dislikes and comments on the videos respectively.
-<img src="http://i.imgur.com/x0fxxD9.png"></img>
-<br/><br/>
-Once we have this table of clean and formatted data, we can do all sorts of analytics on it, like getting the mean and median for number of views, seeing which are really popular videos and so on. Some examples with required code segments are depicted below. I have used the <a href="http://ipython.org/">IPython</a> shell for analyzing the data.
-<br/><br/>
-<b><u><font size=4>Mean and Median of different counts</font></u></b>
-<img src="http://i.imgur.com/TLCqnTD.png"></img>
-<br/><br/>
-<b><u><font size=4>Top ten most viewed videos</font></u></b>
+Now, we can view the contents of this data frame. I will be showing the output of the first few rows with the relevant columns in the snapshot below. I have considered only the important data points which include `viewCount, likeCount, dislikeCount, commentCount` indicating the number of views, likes, dislikes and comments on the videos respectively.
+
+![](http://i.imgur.com/x0fxxD9.png)
+
+Once we have this table of clean and formatted data, we can do all sorts of analytics on it, like getting the mean and median for number of views, seeing which are really popular videos and so on. Some examples with required code segments are depicted below. I have used the [IPython](http://ipython.org/) shell for analyzing the data.
+
+### Mean and Median of different counts
+
+![](http://i.imgur.com/TLCqnTD.png)
+
+### Top ten most viewed videos
 <img src="http://i.imgur.com/qGhdY8d.png"></img>
 <br/><br/>
 <b><u><font size=4>Top ten most liked videos</font></u></b>
