@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 
 Analyzing Social Trends Data from Google Trends and YouTube
