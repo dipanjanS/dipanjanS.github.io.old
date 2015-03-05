@@ -18,27 +18,6 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css"></link>  
-    <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>  
-    <script>
-    function styleCode() {
-        if (typeof disableStyleCode != 'undefined') { return; }
-
-        var a = false;
-        
-        $('code').each(function() {
-            if (!$(this).hasClass('prettyprint')) {
-                $(this).addClass('prettyprint');
-                a = true;
-            }
-        });
-
-        if (a) { prettyPrint(); } 
-    }
-
-    $(function() {styleCode();});
-    </script>
   </head>
 
   <body>
