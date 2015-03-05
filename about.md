@@ -10,7 +10,7 @@ Technology Enthusiast. Casual Gamer. Lifelong learner. Foodie.
 <br>
 ### More Information
 
-Hi there! I work currently as an IT Engineer at [Intel](www.intel.com). The main areas I focus on at work include IT Infrastructure Engineering, Service Management Engineering. Some of the technical domains I work on include Analytics and Enterprise Application Development. My main areas of interest are,
+Hi there! I work currently as an IT Engineer at [Intel](http://www.intel.com). The main areas I focus on at work include IT Infrastructure Engineering, Service Management Engineering. Some of the technical domains I work on include Analytics and Enterprise Application Development. My main areas of interest are,
 
  - Statistical Analysis and Inference, Data Analytics & Visualization, Machine Learning
  - Enterprise Application development, Web design & development
