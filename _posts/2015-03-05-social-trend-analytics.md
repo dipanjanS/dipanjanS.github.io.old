@@ -1,4 +1,6 @@
 ---
+layout: post
+title: Building a Twitter Sentiment Analysis App using R
 published: true
 ---
 
