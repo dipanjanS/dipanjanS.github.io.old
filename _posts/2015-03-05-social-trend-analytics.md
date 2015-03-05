@@ -49,7 +49,9 @@ We will be using some Python libraries so open up your terminal or command promp
 </code></pre>
 <br/>
 Now that the initial setup is complete, we can start writing some code! Head over to your favorite Python IDE or console and use the following code segment to build a YouTube resource object.
-<pre><code>
+
+
+```python
 from apiclient.discovery import build
 from apiclient.errors import HttpError
 import pandas as pd
@@ -59,8 +61,9 @@ YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
-</code></pre>
-<br/> 
+```
+
+ 
 Once this is complete, we will be using this YouTube resource object to search for videos with the <code>android</code> keyword. For this we will be using the <a href="https://developers.google.com/youtube/v3/docs/search/list">search method</a> to query YouTube and after getting back a list of results, we will be storing each result to its appropriate list, and then display the lists of matching videos, channels, and playlists using the following code segment.
 
 <pre><code>
