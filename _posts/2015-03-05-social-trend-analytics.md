@@ -90,6 +90,7 @@ for search_result in search_response.get("items", []):
 ```
 
 Based on the query I ran, most of the results seemed to be videos. The output I obtained is shown in the snapshot below.
+
 ![](http://i.imgur.com/FefZGxb.png)
 
 Since the playlists and channels we obtained are very less in number, I decided to go ahead and analyze the videos obtained. For that, we create a `dict` of video identifiers and video names. Then we pass a query to the YouTube API's [videos method](https://developers.google.com/youtube/v3/docs/videos/list), to get the relevant statistics for each video.
@@ -110,6 +111,7 @@ video_list_stats = youtube.videos().list(
 ```
 
 I know you must be interested by now to see what kind of data is present in `video_list_stats`. So for that, I will show you the relevant statistics obtained for a video from the API in the following snapshot.
+
 ![](http://i.imgur.com/FVYI6b1.png)
 
 Now we will be using `pandas` to analyze this data. For that, the following code segment is used, to get this data into a [pandas data frame](http://pandas.pydata.org/pandas-docs/dev/generated/pandas.DataFrame.html).
@@ -135,14 +137,20 @@ Once we have this table of clean and formatted data, we can do all sorts of anal
 
 ![](http://i.imgur.com/TLCqnTD.png)
 
-### Top ten most viewed videos
-<img src="http://i.imgur.com/qGhdY8d.png"></img>
-<br/><br/>
-<b><u><font size=4>Top ten most liked videos</font></u></b>
-<img src="http://i.imgur.com/48GBd9v.png"></img>
-<br/><br/>
-<b><u><font size=4>Line chart showing counts of likes, views and comments</font></u></b>
-<img src="http://i.imgur.com/rJLuDLw.png"></img>
-<br/><br/>
 
-Thus you can see by now that a lot of interesting analysis and visualizations can be built on top of this data. For more details on how to customize and use the Youtube API with Python, you can refer to <a href="https://developers.google.com/youtube/v3/code_samples/python">this page</a> for sample code segments. 
+### Top ten most viewed videos
+
+![](http://i.imgur.com/qGhdY8d.png)
+
+
+### Top ten most liked videos
+
+![](http://i.imgur.com/48GBd9v.png)
+
+
+### Line chart showing counts of likes, views and comments
+
+![](http://i.imgur.com/rJLuDLw.png)
+
+
+Thus you can see by now that a lot of interesting analysis and visualizations can be built on top of this data. For more details on how to customize and use the Youtube API with Python, you can refer to [this page](https://developers.google.com/youtube/v3/code_samples/python) for sample code segments.
