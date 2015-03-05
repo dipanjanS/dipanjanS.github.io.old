@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: Smartphones vs Tablets: Does size matter?
+published: true
 ---
 
 ## A New Post
