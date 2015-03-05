@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Smartphones vs Tablets\: Does size matter?
+title: Smartphones vs Tablets&#58; Does size matter?
 published: true
 ---
 
