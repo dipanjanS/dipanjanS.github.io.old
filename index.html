@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">    
+      
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+      <div class="entry">
+        {{ post.content | truncatewords:40}}
+      </div>
+      
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css"></link>  
+    <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>  
+    <script>
+    function styleCode() {
+        if (typeof disableStyleCode != 'undefined') { return; }
+
+        var a = false;
+        
+        $('code').each(function() {
+            if (!$(this).hasClass('prettyprint')) {
+                $(this).addClass('prettyprint');
+                a = true;
+            }
+        });
+
+        if (a) { prettyPrint(); } 
+    }
+
+    $(function() {styleCode();});
+    </script>
