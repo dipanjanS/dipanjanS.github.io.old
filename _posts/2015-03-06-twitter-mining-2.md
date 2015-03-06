@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: Twitter Mining - Part II
+published: true
 ---
 
 
