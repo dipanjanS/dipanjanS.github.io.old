@@ -3,37 +3,36 @@ published: false
 ---
 
 
-<a href="http://www.wikiwand.com/en/Social_media">Social media</a> can be defined as virtual communities and networks, where social interaction takes place among people and a wide variety of content is shared including ideas, opinions, information, pictures, videos and much more. Due to the massive growth of social media in the last decade, it has become a rage among data enthusiasts to tap into the vast pool of social data and gather interesting insights like trending items, reception of newly released products by society, popularity measures to name a few.
+[Social media](http://www.wikiwand.com/en/Social_media) can be defined as virtual communities and networks, where social interaction takes place among people and a wide variety of content is shared including ideas, opinions, information, pictures, videos and much more. Due to the massive growth of social media in the last decade, it has become a rage among data enthusiasts to tap into the vast pool of social data and gather interesting insights like trending items, reception of newly released products by society, popularity measures to name a few.
 
-We do a number of experiments with Twitter data, and this series of blog posts is one of the outputs from those efforts.
-<br/><br/> 
-In some of our recent blog posts, we have seen <a href="http://blog.dataweave.in/post/102350776388/analyzing-social-trends-data-from-google-trends-and">how to look at current trends and gather insights from YouTube</a> the popular video sharing website. We have also talked about how to create a quick bare-bones web application to <a href="http://blog.dataweave.in/post/96618078833/building-a-twitter-sentiment-analysis-app-using-r">perform sentiment analysis of tweets from Twitter</a>. Today I will be talking about mining data from Twitter and doing much more with it than just sentiment analysis. We will be analyzing Twitter data in depth and then we will try to get some interesting insights from it.
-<br/><br/>
-To get data from twitter, first we need to create a new Twitter application to get <a href="http://www.wikiwand.com/en/OAuth">OAuth</a> credentials and access to their APIs. For doing this, head over to the <a href="https://apps.twitter.com/">Twitter Application Management page</a> and sign in with your Twitter credentials. Once you are logged in, click on the <code>Create New App</code> button as you can see in the snapshot below. Once you create the application, you will be able to view it in your dashboard just like the application I created, named <code>DataScienceApp1_DS</code> shows up in my dashboard depicted below.
-<br/><br/>
-<img src="http://i.imgur.com/x1EwA1T.png"/>
-<br/><br/>
-On clicking the application, it will take you to your application management dashboard. Here, you will find the necessary keys you need in the <code>Keys and Access Tokens</code> section. The main tokens you need are highlighted in the snapshot below.
-<br/><br/>
-<img src="http://i.imgur.com/d7m5Pdo.png"/>
-<br/><br/>
-I will be doing most of my analysis using the <a href="https://www.python.org/">Python</a> programming language. To be more specific, I will be using the <a href="http://ipython.org/">IPython</a> shell, but you are most welcome to use the language of your choice, provided you get the relevant API wrappers and necessary libraries. 
-<br/><br/>
-<b><u><font size=4>Installing necessary packages</font></u></b>
-<br/><br/>
-After obtaining the necessary tokens, we will be installing some necessary libraries and packages, namely <code><a href="http://mike.verdone.ca/twitter/">twitter</a></code>,  <code><a href="https://pypi.python.org/pypi/PrettyTable">prettytable</a></code> and <code><a href="http://matplotlib.org/">matplotlib</a></code>. Fire up your terminal or command prompt and use the following commands to install the libraries if you don't have them already. 
-<br/><br/>
-<pre><code>
+In some of our recent blog posts, we have seen [how to look at current trends and gather insights from YouTube](http://dipanjans.github.io/social-trend-analytics/) the popular video sharing website. We have also talked about how to create a quick bare-bones web application to [perform sentiment analysis of tweets from Twitter](http://dipanjans.github.io/twitter-sentiment-app/). Today I will be talking about mining data from Twitter and doing much more with it than just sentiment analysis. We will be analyzing Twitter data in depth and then we will try to get some interesting insights from it.
+
+To get data from twitter, first we need to create a new Twitter application to get [OAuth](http://www.wikiwand.com/en/OAuth) credentials and access to their APIs. For doing this, head over to the [Twitter Application Management page](https://apps.twitter.com/) and sign in with your Twitter credentials. Once you are logged in, click on the `Create New App` button as you can see in the snapshot below. Once you create the application, you will be able to view it in your dashboard just like the application I created, named `DataScienceApp1_DS` which shows up in my dashboard depicted below.
+
+![](http://i.imgur.com/x1EwA1T.png)
+
+On clicking the application, it will take you to your application management dashboard. Here, you will find the necessary keys you need in the `Keys and Access Tokens` section. The main tokens you need are highlighted in the snapshot below.
+
+![](http://i.imgur.com/d7m5Pdo.png)
+
+I will be doing most of my analysis using the [Python](https://www.python.org/) programming language. To be more specific, I will be using the [IPython](http://ipython.org/) shell, but you are most welcome to use the language of your choice, provided you get the relevant API wrappers and necessary libraries. 
+
+<br>
+### Installing necessary packages
+
+After obtaining the necessary tokens, we will be installing some necessary libraries and packages, namely [`twitter`](http://mike.verdone.ca/twitter/), [`prettytable`](https://pypi.python.org/pypi/PrettyTable) and [`matplotlib`](http://matplotlib.org/). Fire up your terminal or command prompt and use the following commands to install the libraries if you don't have them already. 
+
+```sh
 [root@dip]#  pip install twitter
 [root@dip]#  pip install prettytable
 [root@dip]#  pip install matplotlib
-</code></pre>
-<br/><br/>
-<b><u><font size=4>Creating a Twitter API Connection</font></u></b>
-<br/><br/>
-Once the packages are installed, you can start writing some code. For this, open up the IDE or text editor of your choice and use the following code segment to create an authenticated connection to <a href="https://dev.twitter.com/rest/public">Twitter's API</a>. The way the following code snippet works, is by using your OAuth credentials to create an object called <code>auth</code> that represents your OAuth authorization. This is then passed to a class called <code>Twitter</code> belonging to the <code>twitter</code> library and we create a resource object named <code>twitter_api</code> that is capable of issuing queries to Twitter's API.
-<br/><br/>
-<pre><code>
+```
+<br>
+### Creating a Twitter API Connection
+
+Once the packages are installed, you can start writing some code. For this, open up the IDE or text editor of your choice and use the following code segment to create an authenticated connection to [Twitter's API](https://dev.twitter.com/rest/public). The way the following code snippet works, is by using your OAuth credentials to create an object called `auth` that represents your OAuth authorization. This is then passed to a class called `Twitter` belonging to the `twitter` library and we create a resource object named `twitter_api` that is capable of issuing queries to Twitter's API.
+
+```python
 import twitter
 
 CONSUMER_KEY = 'REPLACE WITH YOUR KEY'
@@ -46,17 +45,18 @@ auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET, CONSUMER_KEY, CONSUM
 twitter_api = twitter.Twitter(auth=auth)
 
 print twitter_api
-</code></pre>
-<br/><br/>
-If you do a <code>print twitter_api</code> and all your tokens are corrent, you should be getting something similar to the snapshot below. This indicates that we've successfully used OAuth credentials to gain authorization to query Twitter's API.
-<br/><br/>
-<img src="http://i.imgur.com/ZdjsnxC.png"/>
-<br/><br/>
-<b><u><font size=4>Exploring Trending Topics</font></u></b>
-<br/><br/>
-Now that we have a working Twitter resource object, we can start issuing requests to Twitter. Here, we will be looking at the topics which are currently trending worldwide using some specific API calls. The API can also be parameterized to constrain the topics to more specific locales and regions. Each query uses a unique identifier which follows the <a href="https://developer.yahoo.com/geo/geoplanet/">Yahoo! GeoPlanet’s Where On Earth (WOE)</a> ID system, which is an API itself that aims to provide a way to map a unique identifier to any named place on Earth. The following code segment retrieves trending topics in the world, the US and in India.
-<br/><br/>
-<pre><code>
+```
+
+If you do a `print twitter_api` and all your tokens are corrent, you should be getting something similar to the snapshot below. This indicates that we've successfully used OAuth credentials to gain authorization to query Twitter's API.
+
+![](http://i.imgur.com/ZdjsnxC.png)
+
+<br>
+### Exploring Trending Topics
+
+Now that we have a working Twitter resource object, we can start issuing requests to Twitter. Here, we will be looking at the topics which are currently trending worldwide using some specific API calls. The API can also be parameterized to constrain the topics to more specific locales and regions. Each query uses a unique identifier which follows the [Yahoo! GeoPlanet’s Where On Earth (WOE)](https://developer.yahoo.com/geo/geoplanet/) ID system, which is an API itself that aims to provide a way to map a unique identifier to any named place on Earth. The following code segment retrieves trending topics in the world, the US and in India.
+
+```python
 import json
 
 WORLD_WOE_ID = 1
@@ -70,15 +70,15 @@ india_trends = twitter_api.trends.place(_id=IND_WOE_ID)
 print world_trends
 print us_trends
 print india_trends
-</code></pre>
-<br/><br/>
+```
+
 Once you print the responses, you will see a bunch of outputs which look like JSON data. To view the output in a pretty format, use the following commands and you will get the output as a pretty printed JSON shown in the snapshot below.
-<br/><br/>
-<img src="http://i.imgur.com/2EiPuS5.png"/>
-<br/><br/>
-To view all the trending topics in a convenient way, we will be using list comprehensions to slice the data we need and print it using <code>prettytable</code> as shown below.
-<br/><br/>
-<pre><code>
+
+![](http://i.imgur.com/2EiPuS5.png)
+
+To view all the trending topics in a convenient way, we will be using list comprehensions to slice the data we need and print it using `prettytable` as shown below.
+
+```python
 from prettytable import PrettyTable
 
 world_trends = [trend['name'] for trend in world_trends[0]['trends']]
@@ -91,23 +91,24 @@ for world_trend, us_trend, india_trend in zip(world_trends, us_trends, india_tre
     pt.add_row([world_trend, us_trend, india_trend])
 
 print pt
-</code></pre>
-<br/><br/>
+```
+
 On printing the result, you will get a neatly tabulated list of current trends which keep changing with time.
-<br/><br/>
-<img src="http://i.imgur.com/w7vsK5x.png"/>
-<br/><br/>
-Now, we will try to analyze and see if some of these trends are common. For that we use Python's <code>set</code> data structure and compute intersections to get common trends as shown in the snapshot below.
-<br/><br/>
-<img src="http://i.imgur.com/SgKHSC6.png"/>
-<br/><br/>
+
+![](http://i.imgur.com/w7vsK5x.png)
+
+Now, we will try to analyze and see if some of these trends are common. For that we use Python's `set` data structure and compute intersections to get common trends as shown in the snapshot below.
+
+![](http://i.imgur.com/SgKHSC6.png)
+
 Interestingly, some of the trending topics at this moment in the US are common with some of the trending topics in the world. The same holds good for US and India.
-<br/><br/>
-<b><u><font size=4>Mining for Tweets</font></u></b>
-<br/><br/>
-In this section, we will be looking at ways to mine Twitter for retrieving tweets based on specific queries and extracting useful information from the query results. For this we will be using Twitter API's <a href="https://dev.twitter.com/rest/reference/get/search/tweets">GET search/tweets</a> resource. Since the <b>Google Nexus 6</b> phone was launched recently, I will be using that as my query string. You can use the following code segment to make a robust API request to Twitter to get a size-able number of tweets. 
- <br/><br/>
-<pre><code>
+
+<br>
+### Mining for Tweets
+
+In this section, we will be looking at ways to mine Twitter for retrieving tweets based on specific queries and extracting useful information from the query results. For this we will be using Twitter API's [`GET search/tweets`](https://dev.twitter.com/rest/reference/get/search/tweets) resource. Since the **Google Nexus 6** phone was launched recently, I will be using that as my query string. You can use the following code segment to make a robust API request to Twitter to get a size-able number of tweets. 
+
+```python
 query = 'Nexus6'
 count = 100
 search_results = twitter_api.search.tweets(q=query, count=count)
@@ -131,14 +132,15 @@ for _ in range(5):
 
 # Print one sample tweet by slicing the list
 print json.dumps(statuses[0], indent=2)
-</code></pre>
-<br/><br/>
-The code snippet above, makes repeated requests to the Twitter Search API. Search results contain a special <code>search_metadata</code> node that embeds a <code>next_results</code> field with a query string that provides the basis of making a subsequent query. If we weren't using a library like twitter to make the HTTP requests for us, this preconstructed query string would just be appended to the Search API URL, and we'd update it with additional parameters for handling OAuth. However, since we are not making our HTTP requests directly, we must parse the query string into its constituent key/value pairs and provide them as keyword arguments to the <code>search/tweets</code> API endpoint. I have provided a snapshot below, showing how this dictionary of key/value pairs are constructed which are passed as <code>kwargs</code> to the <code>Twitter.search.tweets(..)</code> method.
-<br/><br/>
-<img src="http://i.imgur.com/tcBOBM6.png"/>
-<br/><br/>
-<b><u><font size=4>Analyzing the structure of a Tweet</font></u></b>
-<br/><br/>
+```
+
+The code snippet above, makes repeated requests to the Twitter Search API. Search results contain a special `search_metadata` node that embeds a `next_results` field with a query string that provides the basis of making a subsequent query. If we weren't using a library like twitter to make the HTTP requests for us, this preconstructed query string would just be appended to the Search API URL, and we'd update it with additional parameters for handling OAuth. However, since we are not making our HTTP requests directly, we must parse the query string into its constituent key/value pairs and provide them as keyword arguments to the `search/tweets` API endpoint. I have provided a snapshot below, showing how this dictionary of key/value pairs are constructed which are passed as `kwargs` to the `Twitter.search.tweets(..)` method.
+
+![](http://i.imgur.com/tcBOBM6.png)
+
+<br>
+### Analyzing the structure of a Tweet
+
 In this section we will see what are the main features of a tweet and what insights can be obtained from them. For this we will be taking a sample tweet from our list of tweets and examining it closely. To get a detailed overview of tweets, you can refer to <a href="https://dev.twitter.com/overview/api/tweets">this excellent resource</a> created by Twitter. I have extracted a sample tweet into the variable <code>sample_tweet</code> for ease of use. <code>sample_tweet.keys()</code> returns the top-level fields for the tweet. 
 <br/><br/>
 Typically, a tweet has some of the following data points which are of great interest.
