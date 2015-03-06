@@ -4,10 +4,7 @@ title: Getting Started
 published: true
 ---
 
-<<<<<<< HEAD
+
 Hello World!
-=======
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
->>>>>>> upstream/master
 
 I will be blogging about things that interest me from now on in my website hosted on GitHub running on [Jekyll](http://jekyllrb.com/). For more information on how to do the same without much hassle, head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
