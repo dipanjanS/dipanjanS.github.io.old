@@ -17,7 +17,7 @@ Hi there! I work currently as an IT Engineer at [Intel](http://www.intel.com). T
  - Data Modelling, Warehousing and Business Intelligence
  - Computer Vision and Image Processng
  - Cloud Computing and Distributed Systems
- 
+
 Outside of work, I love reading, writing, learning new things and sharing them with others and watching sitcoms. Feel free to contact me if you have anything interesting to share.
 
 <br>
