@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: Supervised Learning - Binary Classification using Logistic Regression
+published: true
 ---
 
 
