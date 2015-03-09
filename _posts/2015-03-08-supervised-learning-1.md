@@ -1,9 +1,8 @@
 ---
 layout: post
-title: Supervised Learning - Binary Classification using Logistic Regression
+title: "Supervised Learning - Binary Classification using Logistic Regression"
 published: true
 ---
-
 
 One of the main domains in classic machine learning is supervised learning. Where, we usually have a training data set with features and class labels and our objective is to predict the class of any new data, often known as the test data using its feature set based on some model which is built from the training data.
 
@@ -42,7 +41,7 @@ The plot obtained is depicted below.
 Now, we build a generalized linear model using the data points to partition this space into the two classes so that we would be able to predict the class labels for future data points. For building the generalized linear model, we using the following code segment.
 
 ```r
-> reg=glm(z~x+y,data=df,family=binomial)
+> reg <- glm(z~x+y,data=df,family=binomial)
 > summary(reg)
 ```
 
@@ -94,9 +93,17 @@ The visualization is depicted below.
 
 ![](http://i.imgur.com/hlr3eWI.png)
 
-Since the logistic regression technique we used is a generalized linear model, the line that separate the two regions above is a straight line. We will look at more examples of supervised learning problems in the future. Thanks a lot to [Arthur Charpentier](https://twitter.com/freakonometrics) and his awesome experiments without which this post would not have been possible.
+Since the logistic regression technique we used is a generalized linear model, the line that separate the two regions above is a straight line. To build a non-linear model, you can use the `nls` or `gmm` functions or add some higher order interaction terms to our existing model and rebuild it. I have used the latter approach in the following code snippet
 
+```r
+> reg <- glm(z~x+y+I(x**2)+I(y**2),data=df,family=binomial)
+> z_vec <- outer(x_vec,y_vec,predict_2d)
+> image(x_vec,y_vec,z_vec,col=color_vec2)
+> points(x,y,pch=19,cex=2,col=color_vec1[z+1])
+```
 
+The plot obtained is shown below, you can clearly see that the regions are no longer separated by a straight line but it is a curve now.
 
+![](http://i.imgur.com/UxDSSU0.png)
 
-
+We will look at more examples of supervised learning problems in the future. Thanks a lot to [Arthur Charpentier](https://twitter.com/freakonometrics) and his awesome experiments without which this post would not have been possible.
