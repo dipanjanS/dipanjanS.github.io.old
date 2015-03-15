@@ -49,9 +49,10 @@ In simplest terms, data science is a discipline which deals with the extraction 
 ![](http://i.imgur.com/wBwKU8R.png)
 
 It is clear from the above diagram that you need,
- - Hacking Skills: This is basically being able to play around with the data and use it to fit our needs including data munging, cleaning, transforming, exploring and so on.
- - Math and Statistics Knowledge: You need a solid grasp of concepts related to statistics and math to get an idea of how models work, how to tune parameters, build efficient models which are not overfit or underfit
- - Substantive Expertise: This is perhaps the most important skill because domain knowledge and expertise is really important. If you don't understand your business problem or scenario and the techniques needed for that domain, using data science techniques blindly will get you nowhere.
+
+ - **Hacking Skills:** This is basically being able to play around with the data and use it to fit our needs including data munging, cleaning, transforming, exploring and so on.
+ - **Math and Statistics Knowledge:** You need a solid grasp of concepts related to statistics and math to get an idea of how models work, how to tune parameters, build efficient models which are not overfit or underfit
+ - **Substantive Expertise:** This is perhaps the most important skill because domain knowledge and expertise is really important. If you don't understand your business problem or scenario and the techniques needed for that domain, using data science techniques blindly will get you nowhere.
  
 Python has a wide variety of tools and frameworks for using Data Science techniques and methodologies which we will be looking at in one of the sections below. To get a brief overview, Do check out this video by Jeremy Achin, the founder of DataRobot at PyCon 2014 in Ukraine.
 
