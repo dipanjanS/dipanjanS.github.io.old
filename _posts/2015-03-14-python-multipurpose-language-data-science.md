@@ -37,6 +37,7 @@ Some interesting features of Python include,
  - Python enforces correct indentation of the code by making the indentation part of the syntax itself! There are no control braces in Python. Blocks of code are identified by the level of indentation and this improves code readability.
  - Python `can be used for any programming task`, from GUI programming to web programming with everything else in between. It's quite efficient, as much of its activity is done at the C level. Python is just a layer on top of C. 
  - Python has `libraries for everything` you can think of: game programming and openGL, GUI interfaces, web frameworks, semantic web, scientific computing, machine learning, image processing and so on.
+ - Python is `open source` and it has `excellent and active support` from the developer community.
 
 <br>
 ## How Python is useful for Data Science
