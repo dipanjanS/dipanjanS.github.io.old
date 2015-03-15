@@ -4,7 +4,6 @@ title: "Python: A true multi-purpose language and its role in Data Science"
 published: true
 ---
 
-
 ![](http://i.imgur.com/GXDrKl6.png?1)
 
 Today, I will be talking about one of the popular programming languages [Python](https://www.python.org) and how it has evolved over the last couple of years to become a true multi-purpose programming language. We will also be looking at how Python enables us to become better data scientists using its vast arsenal of data analysis and machine learning tools, libraries and frameworks and how should we ideally go about exploring them.
@@ -25,8 +24,11 @@ Before, we begin, one might be thinking, why should we choose Python over any ot
  - Desktop GUIs
  - Software development, Build management and Continuous Integration
 
-For more details refer to https://www.python.org/about/apps/
+To get an idea about the history of Python and how it evolved over time, check out this really interesting keynote speech at PyCon UK by Jessica McKellar, also a director for the PSF
 
+<iframe width="420" height="315" src="https://www.youtube.com/embed/CI_RPSbsRw8" frameborder="0" allowfullscreen></iframe>
+
+<br>
 Some interesting features of Python include,
 
  - Python is `dynamically typed`: it means that you don't declare a type (e.g. 'integer') for a variable name, and then assign something of that type (and only that type). Instead, you have variable names, and you bind them to entities whose type stays with the entity itself. `a = 5` makes the variable name `a` to refer to the integer `5`. Later, `a = "hello"` makes the variable name `a` to refer to a string containing `"hello"`.
