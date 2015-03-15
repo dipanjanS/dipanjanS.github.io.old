@@ -26,7 +26,7 @@ Before, we begin, one might be thinking, why should we choose Python over any ot
 
 To get an idea about the history of Python and how it evolved over time, check out this really interesting keynote speech at PyCon UK by Jessica McKellar, also a director for the PSF
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/CI_RPSbsRw8" frameborder="0" allowfullscreen></iframe>
+<div style="text-align: center;"><iframe width="420" height="315" src="https://www.youtube.com/embed/CI_RPSbsRw8" frameborder="0" allowfullscreen></iframe></div>
 
 <br>
 Some interesting features of Python include,
@@ -56,7 +56,7 @@ It is clear from the above diagram that you need,
  
 Python has a wide variety of tools and frameworks for using Data Science techniques and methodologies which we will be looking at in one of the sections below. To get a brief overview, Do check out this video by Jeremy Achin, the founder of DataRobot at PyCon 2014 in Ukraine.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CoxjADZHUQA" frameborder="0" allowfullscreen></iframe>
+<div style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/CoxjADZHUQA" frameborder="0" allowfullscreen align="center" ></iframe></div>
 
 <br>
 ## Python tools, frameworks and libraries for Data Science
