@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: "Python: A true multi-purpose language and its role in Data Science"
+published: true
 ---
 
 
