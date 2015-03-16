@@ -5,7 +5,7 @@ published: true
 ---
 
 <div style="text-align: center;">
-![](http://i.imgur.com/GXDrKl6.png?1)
+<img src="http://i.imgur.com/GXDrKl6.png"/>
 </div>
 
 Today, I will be talking about one of the popular programming languages [Python](https://www.python.org) and how it has evolved over the last couple of years to become a true multi-purpose programming language. We will also be looking at how Python enables us to become better data scientists using its vast arsenal of data analysis and machine learning tools, libraries and frameworks and how should we ideally go about exploring them.
@@ -49,7 +49,7 @@ Some interesting features of Python include,
 In simplest terms, data science is a discipline which deals with the extraction of knowledge from data using a wide variety of techniques in the fields of mathematics, statistics and computer science. One can get a better idea by looking at the following venn diagram by the famous data scientist, Drew Conway.
 
 <div style="text-align: center;">
-![](http://i.imgur.com/wBwKU8R.png)
+<img src="http://i.imgur.com/wBwKU8R.png"/>
 </div>
 
 It is clear from the above diagram that you need,
