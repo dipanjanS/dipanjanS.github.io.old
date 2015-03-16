@@ -11,7 +11,7 @@ Today, I will be talking about one of the popular programming languages [Python]
 <br>
 ## Why Python?
 
-Before, we begin, one might be thinking, why should we choose Python over any other programming language? I would say that no language is suitable for solving all kinds of problem, however Python being a multi-purpose programming language can be used in different domains to build solutions for different scenarios. Some examples include,
+Before, we begin, one might be thinking, why should we choose Python over any other programming language? I would say that no language is suitable for solving all kinds of problems, however, Python being a high level multi-purpose programming language, can be used in different domains to build solutions for different scenarios. Some examples include,
 
  - Web and Internet Development
  - Web Crawling and Scraping
