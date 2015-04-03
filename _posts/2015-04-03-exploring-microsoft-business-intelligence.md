@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: "Exploring the Microsoft Business Intelligence Stack"
+published: true
 ---
 
 
