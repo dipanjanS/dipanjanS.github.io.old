@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Exploring the Microsoft Business Intelligence Stack"
+title: "Business Intelligence: Exploring the Microsoft Business Intelligence Stack"
 published: true
 ---
 
