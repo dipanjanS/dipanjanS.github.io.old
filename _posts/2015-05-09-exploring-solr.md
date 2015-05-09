@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Exploring Solr"
+title: "Exploring Solr - Part I"
 published: true
 ---
 
