@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: "Exploring Solr"
+published: true
 ---
 
 
