@@ -1,9 +1,13 @@
 ---
-published: false
+layout: post
+title: "Exploring Solr - Part II"
+published: true
 ---
 
-
-
+<div style="text-align: center;">
+<img src="http://i.imgur.com/ROikH1d.png"/>
+</div>
+<br>
 
 In our last [article about Solr](http://dipanjans.github.io/exploring-solr/) we saw what the main features of Solr are and how some of them can be used in different scenarios and use-cases. Today we will be diving into the depths of Solr and I will be telling you, how you can setup and configure your own search server by leveraging Solr's capabilities. This article will mainly focus on getting Solr up and running and indexing some documents in the default Solr core. We will be focusing more on customization and setting up our own core and indexing custom data in a subsequent article because it is essential that you get a feel of how things work in Solr before setting up your own data cores and indexes.
 
