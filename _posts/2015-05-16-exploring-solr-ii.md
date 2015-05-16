@@ -39,7 +39,7 @@ Behind the scenes, `start.jar` launched a Java web server named Jetty, listening
 </div>
 <br>
 
-> **Note: **Not much can go wrong when starting the example server. The most common issue if the server doesn’t start correctly is that the default port `8983` is already in use by another process. If this is the case, you’ll see an error that looks like `java.net.BindException: Address already in use.` This is easy to resolve by changing the port Solr binds to. Change your start command to specify a different port for Jetty to bind to using `java -Djetty.port=8080 -jar start.jar`. Using this command, Jetty will bind to port `8080` instead of `8983`.
+> **Note:** Not much can go wrong when starting the example server. The most common issue if the server doesn’t start correctly is that the default port `8983` is already in use by another process. If this is the case, you’ll see an error that looks like `java.net.BindException: Address already in use.` This is easy to resolve by changing the port Solr binds to. Change your start command to specify a different port for Jetty to bind to using `java -Djetty.port=8080 -jar start.jar`. Using this command, Jetty will bind to port `8080` instead of `8983`.
 
 test
 
