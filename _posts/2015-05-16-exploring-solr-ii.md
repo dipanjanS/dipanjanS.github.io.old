@@ -25,3 +25,22 @@ To start Solr, you just need to go to the `example` directory as shown above and
 </div>
 <br>
 
+No with all the verbose output on the terminal, you might be wondering what exactly happened. To be clear, you now have a running version of Solr 4.9 on your computer. You can verify that Solr started correctly by directing your web browser to the Solr administration page at http://localhost:8983/solr. The below figure depicts how the administration page looks like.
+
+<div style="text-align: center;">
+<img src="http://i.imgur.com/FO7O2IU.png"/>
+</div>
+<br>
+
+Behind the scenes, `start.jar` launched a Java web server named Jetty, listening on port 8983. Solr is a web application running in Jetty. The figure below, illustrates what is now running on your computer. In simple words, the Solr web application `solr.war` runs in Jetty on top of Java. There is one Solr home directory set per Jetty server, using Java system property `solr.solr.home`. Solr can host multiple cores per server, and each core has a separate directory (for example, `collection1`) containing a core-specific configuration and index (`data`) under Solr home. We will be working with the default core here like I mentioned in the beginning but in the next article we will see how we can setup our own core and index our own data and access the same in search operations.
+
+<div style="text-align: center;">
+<img src="http://i.imgur.com/P3JCF1M.png"/>
+</div>
+<br>
+
+> **Note: **Not much can go wrong when starting the example server. The most common issue if the server doesn’t start correctly is that the default port `8983` is already in use by another process. If this is the case, you’ll see an error that looks like `java.net.BindException: Address already in use.` This is easy to resolve by changing the port Solr binds to. Change your start command to specify a different port for Jetty to bind to using `java -Djetty.port=8080 -jar start.jar`. Using this command, Jetty will bind to port `8080` instead of `8983`.
+
+test
+
+
