@@ -4,7 +4,8 @@ published: false
 
 
 
-In our last [article about Solr](http://dipanjans.github.io/exploring-solr/) we saw what the main features of Solr are and how some of them can be used in different scenarios and use-cases. Today we will be diving into the depths of Solr and I will be telling you, how you can setup and configure your own search server by leveraging Solr's capabilities.
+
+In our last [article about Solr](http://dipanjans.github.io/exploring-solr/) we saw what the main features of Solr are and how some of them can be used in different scenarios and use-cases. Today we will be diving into the depths of Solr and I will be telling you, how you can setup and configure your own search server by leveraging Solr's capabilities. This article will mainly focus on getting Solr up and running and indexing some documents in the default Solr core. We will be focusing more on customization and setting up our own core and indexing custom data in a subsequent article because it is essential that you get a feel of how things work in Solr before setting up your own data cores and indexes.
 
 Before you can start installing or using Solr, you need to make sure that you have `Java` installed in your system. You can check that easily by going to the command prompt\terminal and typing the command `java -version` or simply `java`. If you get a proper output it means that you have `java` installed. If it says that the command was not recognized, you can go to [this website](http://www.oracle.com/technetwork/java/javase/downloads/index.html) and download Java. The `JRE` would be enough, you don't need the `JDK` unless you want to write your APIs or code in Java later on, since client interaction with Solr happens over HTTP, so you can use any language that provides an HTTP client library. In addition, a number of open source client libraries are available for Solr for popular languages like .NET, Python, Ruby, PHP, and Java.
 
@@ -17,7 +18,10 @@ After downloading the archive, extract it to the directory of your choice. No in
 </div>
 <br>
 
+To start Solr, you just need to go to the `example` directory as shown above and type the command, `java -jar start.jar` in the terminal. On doing that, if you see something similar to this towards the end of the output which displays on the terminal, you are good to go.
 
-
-
+<div style="text-align: center;">
+<img src="http://i.imgur.com/DwmXWid.png"/>
+</div>
+<br>
 
