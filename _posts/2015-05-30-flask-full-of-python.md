@@ -510,4 +510,59 @@ Blueprints in Flask are intended for these cases:
  - Register a blueprint multiple times on an application with different URL rules.
  - Provide template filters, static files, templates, and other utilities through blueprints. A blueprint does not have to implement applications or view functions.
  - Register a blueprint on an application for any of these cases when initializing a Flask extension.
+ 
+So how do we introduce blueprints to our API? It is pretty simple. The whole code base remains the same. The only files which change are the `__init__.py` file under `socapp` package which initialized the flask app and registers the blueprint and the `routes.py` file for each of the `modules`. Changed code snippets are shown below.
+
+Code for `/socapp/__init__.py`
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Hello you are at the root level"
+
+from socapp.modules.cat.routes import cat_routes
+from socapp.modules.dog.routes import dog_routes
+from socapp.modules.monkey.routes import monkey_routes
+
+
+app.register_blueprint(cat_routes, url_prefix='/animal/cat')
+app.register_blueprint(dog_routes, url_prefix='/animal/dog')
+app.register_blueprint(monkey_routes, url_prefix='/animal/monkey')
+```
+
+Code for `/socapp/modules/cat/routes.py`
+
+```python
+from flask import Blueprint
+from socapp import app
+import json
+from socapp.models.cat.model import Cat
+
+
+cat_routes = Blueprint('catroutes', app.name)
+
+@cat_routes.route('/goodcat/<name>', methods=['GET'])
+def get_goodcat_details(name):
+
+    cat = Cat()
+    cat.setName(name)
+    cat.setHatesDogs(False)
+    return json.dumps(cat.__dict__)
+
+@cat_routes.route('/badcat/<name>', methods=['GET'])
+def get_badcat_details(name):
+
+    cat = Cat()
+    cat.setName(name)
+    cat.setHatesDogs(True)
+    return json.dumps(cat.__dict__)
+```
+
+You can run the app in the same way as earlier and it will work in the exact same way! Thus, we see that using blueprints we can give url prefixes for specific access patterns for specific modules like I had mentioned earlier. However like mentioned above, this is not the only feature that blueprints provide and you can do a lot more.
+
+I hope this article helps you on your journey to create better RESTful APIs and Web Services and build awesome apps using Python. Some useful resources if you are serious about Flask development include, [The Flask Mega Tutorial!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and [An Introduction to Flask](http://shop.oreilly.com/product/0636920034797.do?cmp=af-prog-books-videos-product_cj_9781491911921_%25zp) both by Miguel Grinberg. Thats all for now folks, see you next time!
 
