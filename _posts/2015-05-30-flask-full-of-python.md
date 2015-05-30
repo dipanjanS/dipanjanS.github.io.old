@@ -3,6 +3,11 @@ published: false
 ---
 
 
+<div style="text-align: center;">
+<img src="http://i.imgur.com/4WMSBqY.png"/>
+</div>
+<br>
+
 Recently, I had been working on building some custom dashboards and visualizations for one of my projects using [D3.js](http://d3js.org/) and [HTML5](https://www.wikiwand.com/en/HTML5). Since I am not primarily a frontend guy, making a RESTful API with javascript frameworks like [Node.js](https://nodejs.org/) and [Express.js](http://expressjs.com/) was definitely not my cup of tea because it would have to involve me spending hours understanding how the frameworks actually work and how they handle routing, resource, endpoint consumptions and so on. Although it seems pretty straightforward to do it given that I checked out some tutorials later on. Maybe I would try it out when I have some free time! Moving on, since we were dealing with a lot of text analytics and text data, most of our analytics algorithms were written in Python so to serve the results from an API, I thought of using the [Flask](http://flask.pocoo.org/) framework for developing the REST API and it worked out great! We are also using it for developing some of our other webservices with a lot of modules so today, I will be talking about how you can get a Flask RESTful Web Service up and running with proper API endpoints for consumption. I will also be talking about some neat tricks you can use when your Web Service starts getting big with a lot of modules and it becomes difficult to handle all the routes in one place. So lets get started!
 
 ## Installing Flask
@@ -576,5 +581,5 @@ You can run the app in the same way as earlier and it will work in the exact sam
 Access the repository containing the complete API code by **[clicking here](https://github.com/dipanjanS/flask-api-tutorials/tree/master/flask-animals-apps/modularized-app-blueprints).** 
 <br>
 
-I hope this article helps you on your journey to create better RESTful APIs and Web Services and build awesome apps using Python. Some useful resources if you are serious about Flask development include, [The Flask Mega Tutorial!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and [An Introduction to Flask](http://shop.oreilly.com/product/0636920034797.do?cmp=af-prog-books-videos-product_cj_9781491911921_%25zp) both by Miguel Grinberg. Thats all for now folks, see you next time!
+I hope this article helps you on your journey to create better RESTful APIs and Web Services and build awesome apps using Python. Some useful resources if you are serious about Flask development include, [The Flask Mega Tutorial!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and [An Introduction to Flask](http://shop.oreilly.com/product/0636920034797.do?cmp=af-prog-books-videos-product_cj_9781491911921_%25zp) both by Miguel Grinberg. Thats all for now folks. See you next time!
 
