@@ -209,10 +209,10 @@ We now create the same app but now re-factoring the code and restructuring the c
     /soc-app
       |
       +---- /socapp
-              |
-              +---- __init__.py
-              +---- model.py
-              +---- routes.py
+      |       |
+      |       +---- __init__.py
+      |       +---- model.py
+      |       +---- routes.py
       +---- run.py
       
   ```
@@ -377,4 +377,125 @@ def get_badmonkey_details(name):
     return json.dumps(monkey.__dict__)
 
 ```
+From the above structure, you can see this is a pretty neat way to organize your code. You have your main app where `__init__.py` instantiates your flask app and you have all data model related classes and properties in the `model.py` file and the API routes are defined in `routes.py`. To run the app just run the command `python run.py` from the terminal and you can access the API using the same access patterns as we had shown earlier.
+
+
+## Flask API with further modularizations
+
+Here we will modularize our existing codebase further making necessary changes and introducing further separation of concerns with regards to our models and modules which do the routing and act as controllers if you consider a typical MVC pattern. The folder structure for the new app will be as follows
+
+```
+    /modularized-app
+      |
+      +---- /socapp
+      |       |
+      |       +---- __init__.py
+      |       +---- /models
+      |       |       |
+      |       |       +---- /animal
+      |       |       |       |
+      |       |       |       +---- __init__.py
+      |       |       |       +---- model.py
+      |       |       +---- /cat
+      |       |       |       |
+      |       |       |       +---- __init__.py
+      |       |       |       +---- model.py
+      |       |       +---- /dog
+      |       |       |       |
+      |       |       |       +---- __init__.py
+      |       |       |       +---- model.py
+      |       |       +---- /monkey
+      |       |               |
+      |       |               +---- __init__.py
+      |       |               +---- model.py
+      |       +---- /modules
+      |               |
+      |               +---- __init__.py
+      |               +---- /cat
+      |               |       |
+      |               |       +---- __init__.py
+      |               |       +---- routes.py
+      |               +---- /dog
+      |               |       |
+      |               |       +---- __init__.py
+      |               |       +---- routes.py
+      |               +---- /monkey
+      |                       |
+      |                       +---- __init__.py
+      |                       +---- rputes.py
+      +---- run.py
+      
+  ```
+  
+Thus code in the `run.py` file essentially remains the same because it is just concerned with running the app on the server. The code in the `models` package changes essentially where each sub-package in the `models` package now has its own model which is basically denoted by `model.py` and it just deals with its own model and related methods. Do note that this app is extremely simplistic hence you may get an idea that such a level of granular separation and modularization may not be needed but when your apps start getting huge, you need to have separate models and related methods for that. Example if you consider a Blog model, you need models like `posts`, `users`, `comments`, `login` and so on which will help you keep the right level of separation. Do note that the previous model works fine for small scale apps so it all boils down to the level of complexity involving your app and its access patterns. The `modules` package essentially deals with the different modules and their routes based on the API access endpoints which is handled by `routes.py` for each module like `dog`, `cat` and so on.
+
+Some of the sample code is shown below for each type of package in the above app.
+
+Code for `/socapp/__init__.py`
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Hello you are at the root level"
+
+import socapp.modules.cat.routes
+import socapp.modules.dog.routes
+import socapp.modules.monkey.routes
+```
+
+Code for `/socapp/models/cat/model.py`
+
+```python
+from socapp.models.animal.model import Animal
+
+
+class Cat(Animal):
+
+    def __init__(self):
+        Animal.__init__(self)
+        self.hates_dogs = None
+
+    def setName(self, name):
+        Animal.setName(self, name)
+        Animal.setSpecies(self, "Cat")
+
+    def setHatesDogs(self, hates_dogs):
+        self.hates_dogs = hates_dogs
+
+    def getHatesDogs(self):
+        return self.hates_dogs
+```       
+
+Code for `/socapp/modules/cat/routes.py`
+
+```python
+from socapp import app
+import json
+from socapp.models.cat.model import Cat
+
+
+@app.route('/animal/cat/goodcat/<name>', methods=['GET'])
+def get_goodcat_details(name):
+
+    cat = Cat()
+    cat.setName(name)
+    cat.setHatesDogs(False)
+    return json.dumps(cat.__dict__)
+
+@app.route('/animal/cat/badcat/<name>', methods=['GET'])
+def get_badcat_details(name):
+
+    cat = Cat()
+    cat.setName(name)
+    cat.setHatesDogs(True)
+    return json.dumps(cat.__dict__)
+```
+To run this app you need to run the same command as you did for the previous app. Thus you can see that it is not that hard to refactor the codebase and introduce the right level of modularization which helps us think long term changes and be prepared for introducing new features and functionality to our API without spending much time on editing and deleting large chunks of code later on.
+
+## Introducing blueprints to our API
+
 
