@@ -203,7 +203,8 @@ So basically, everything related to the app is in one single monolithic file. We
 
 Thus you have a working API up and running with several endpoints. Now, I will show you how you can organize the same API using proper separation of concerns which will help you out once your project starts to get bigger and bigger.
 
-Repository containing code: https://github.com/dipanjanS/flask-api-tutorials/tree/master/flask-animals-apps/monolithic-app 
+Access the repository containing the complete API code by **[clicking here](https://github.com/dipanjanS/flask-api-tutorials/tree/master/flask-animals-apps/monolithic-app).**  
+<br>
 
 ## Flask API with Separation of Concerns
 
@@ -383,6 +384,8 @@ def get_badmonkey_details(name):
 ```
 From the above structure, you can see this is a pretty neat way to organize your code. You have your main app where `__init__.py` instantiates your flask app and you have all data model related classes and properties in the `model.py` file and the API routes are defined in `routes.py`. To run the app just run the command `python run.py` from the terminal and you can access the API using the same access patterns as we had shown earlier.
 
+Access the repository containing the complete API code by **[clicking here](https://github.com/dipanjanS/flask-api-tutorials/tree/master/flask-animals-apps/soc-app).** 
+<br>
 
 ## Flask API with further modularizations
 
@@ -500,6 +503,8 @@ def get_badcat_details(name):
 ```
 To run this app you need to run the same command as you did for the previous app. Thus you can see that it is not that hard to refactor the codebase and introduce the right level of modularization which helps us think long term changes and be prepared for introducing new features and functionality to our API without spending much time on editing and deleting large chunks of code later on.
 
+Access the repository containing the complete API code by **[clicking here](https://github.com/dipanjanS/flask-api-tutorials/tree/master/flask-animals-apps/modularized-app).** 
+<br>
 
 ## Introducing blueprints to our API
 
@@ -567,6 +572,9 @@ def get_badcat_details(name):
 ```
 
 You can run the app in the same way as earlier and it will work in the exact same way! Thus, we see that using blueprints we can give url prefixes for specific access patterns for specific modules like I had mentioned earlier. However like mentioned above, this is not the only feature that blueprints provide and you can do a lot more.
+
+Access the repository containing the complete API code by **[clicking here](https://github.com/dipanjanS/flask-api-tutorials/tree/master/flask-animals-apps/modularized-app-blueprints).** 
+<br>
 
 I hope this article helps you on your journey to create better RESTful APIs and Web Services and build awesome apps using Python. Some useful resources if you are serious about Flask development include, [The Flask Mega Tutorial!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and [An Introduction to Flask](http://shop.oreilly.com/product/0636920034797.do?cmp=af-prog-books-videos-product_cj_9781491911921_%25zp) both by Miguel Grinberg. Thats all for now folks, see you next time!
 
