@@ -496,6 +496,18 @@ def get_badcat_details(name):
 ```
 To run this app you need to run the same command as you did for the previous app. Thus you can see that it is not that hard to refactor the codebase and introduce the right level of modularization which helps us think long term changes and be prepared for introducing new features and functionality to our API without spending much time on editing and deleting large chunks of code later on.
 
+
 ## Introducing blueprints to our API
 
+You may have noticed in the previous APIs that essentially even though we were modularizing the code, the route names were unnecessarily long and a part of the route was being repeated in each endpoint. Blueprints provide us an opportunity to overcome this and also utlize modules efficiently to their full potential. To quote from the Flask page on [blueprints](http://flask.pocoo.org/docs/0.10/blueprints/),
+
+> Flask uses a concept of blueprints for making application components and supporting common patterns within an application or across applications. Blueprints can greatly simplify how large applications work and provide a central means for Flask extensions to register operations on applications. A Blueprint object works similarly to a Flask application object, but it is not actually an application. Rather it is a blueprint of how to construct or extend an application.
+
+Blueprints in Flask are intended for these cases:
+
+ - Factor an application into a set of blueprints. This is ideal for larger applications; a project could instantiate an application object, initialize several extensions, and register a collection of blueprints.
+ - Register a blueprint on an application at a URL prefix and/or subdomain. Parameters in the URL prefix/subdomain become common view arguments (with defaults) across all view functions in the blueprint.
+ - Register a blueprint multiple times on an application with different URL rules.
+ - Provide template filters, static files, templates, and other utilities through blueprints. A blueprint does not have to implement applications or view functions.
+ - Register a blueprint on an application for any of these cases when initializing a Flask extension.
 
