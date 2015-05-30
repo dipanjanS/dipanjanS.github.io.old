@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: "A Flask full of Python"
+published: true
 ---
 
 
