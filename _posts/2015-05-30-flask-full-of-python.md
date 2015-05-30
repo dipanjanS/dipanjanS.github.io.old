@@ -39,6 +39,155 @@ Now, if you go to http://localhost:8888/ you will be able to see the `Hello Worl
 
 ## Monolithic Flask API
 
+The first API we will develop will be a simple monolithic API, i.e., everything related to the API will be in a single file. Kind of like how APIs are developed using the [Bottle](http://bottlepy.org/docs/dev/index.html) framework. Following is the code snippet
+
+```python
+from flask import Flask
+import json
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Hello you are at the root level"
+
+
+@app.route('/animal/gooddog/<name>', methods=['GET'])
+def get_gooddog_details(name):
+
+    dog = Dog()
+    dog.setName(name)
+    dog.setChasesCats(False)
+    return json.dumps(dog.__dict__)
+
+@app.route('/animal/baddog/<name>', methods=['GET'])
+def get_baddog_details(name):
+
+    dog = Dog()
+    dog.setName(name)
+    dog.setChasesCats(True)
+    return json.dumps(dog.__dict__)
+
+@app.route('/animal/goodcat/<name>', methods=['GET'])
+def get_goodcat_details(name):
+
+    cat = Cat()
+    cat.setName(name)
+    cat.setHatesDogs(False)
+    return json.dumps(cat.__dict__)
+
+@app.route('/animal/badcat/<name>', methods=['GET'])
+def get_badcat_details(name):
+
+    cat = Cat()
+    cat.setName(name)
+    cat.setHatesDogs(True)
+    return json.dumps(cat.__dict__)
+
+@app.route('/animal/goodmonkey/<name>', methods=['GET'])
+def get_goodmonkey_details(name):
+
+    monkey = Monkey()
+    monkey.setName(name)
+    monkey.setEatsBananas(True)
+    return json.dumps(monkey.__dict__)
+
+@app.route('/animal/badmonkey/<name>', methods=['GET'])
+def get_badmonkey_details(name):
+
+    monkey = Monkey()
+    monkey.setName(name)
+    monkey.setEatsBananas(False)
+    return json.dumps(monkey.__dict__)
+
+
+class Animal:
+
+    def __init__(self):
+        self.name = None
+        self.species = None
+
+    def setName(self, name):
+        self.name = name
+
+    def getName(self):
+        return self.name
+
+    def setSpecies(self, species):
+        self.species = species
+
+    def getSpecies(self):
+        return self.species
+
+    def __str__(self):
+        return "%s is a %s" % (self.name, self.species)
+
+
+class Dog(Animal):
+
+    def __init__(self):
+        Animal.__init__(self)
+        self.chases_cats = None
+
+    def setName(self, name):
+        Animal.setName(self, name)
+        Animal.setSpecies(self, "Dog")
+
+    def setChasesCats(self, chases_cats):
+        self.chases_cats = chases_cats
+
+    def getChasesCats(self):
+        return self.chases_cats
+
+
+class Cat(Animal):
+
+    def __init__(self):
+        Animal.__init__(self)
+        self.hates_dogs = None
+
+    def setName(self, name):
+        Animal.setName(self, name)
+        Animal.setSpecies(self, "Cat")
+
+    def setHatesDogs(self, hates_dogs):
+        self.hates_dogs = hates_dogs
+
+    def getHatesDogs(self):
+        return self.hates_dogs
+
+
+class Monkey(Animal):
+
+    def __init__(self):
+        Animal.__init__(self)
+        self.eats_bananas = None
+
+    def setName(self, name):
+        Animal.setName(self, name)
+        Animal.setSpecies(self, "Monkey")
+
+    def setEatsBananas(self, eats_bananas):
+        self.eats_bananas = eats_bananas
+
+    def getEatsBananas(self):
+        return self.eats_bananas
+
+
+app.run(debug=True, port=8888)
+```
+So basically, everything related to the app is in one single monolithic file. We have created API endpoints related to a few animals here using Inheritance. To get a detailed idea about inheritance check out this [awesome tutorial here](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/). Once you start running the code, here are a few responses you get for some of the API calls.
+
+`GET` request for `http://localhost:8888/animal/gooddog/bruzo`
+
+```json
+{
+    chases_cats: false,
+    name: "bruzo",
+    species: "Dog"
+}
+```
+
 
 
 
