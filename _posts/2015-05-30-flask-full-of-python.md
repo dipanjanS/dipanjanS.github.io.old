@@ -37,6 +37,8 @@ To run the app enter the following command from the terminal and you would see t
 ``` 
 Now, if you go to http://localhost:8888/ you will be able to see the `Hello World!` greeting on the browser page. That's it! you have a working web app running in less than five minutes! However now we will be venturing beyond hello world and into making some RESTful Web Services.
 
+> Note: You can access all the code developed below for the REST APIs in [this github repository](https://github.com/dipanjanS/flask-api-tutorials)
+
 ## Monolithic Flask API
 
 The first API we will develop will be a simple monolithic API, i.e., everything related to the API will be in a single file. Kind of like how APIs are developed using the [Bottle](http://bottlepy.org/docs/dev/index.html) framework. Following is the code snippet
@@ -200,6 +202,8 @@ So basically, everything related to the app is in one single monolithic file. We
 ```
 
 Thus you have a working API up and running with several endpoints. Now, I will show you how you can organize the same API using proper separation of concerns which will help you out once your project starts to get bigger and bigger.
+
+Repository containing code: https://github.com/dipanjanS/flask-api-tutorials/tree/master/flask-animals-apps/monolithic-app 
 
 ## Flask API with Separation of Concerns
 
