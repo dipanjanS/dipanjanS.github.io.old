@@ -1,8 +1,9 @@
 ---
 layout: post
-title: "A Flask full of Python"
+title: A Flask full of Python
 published: true
 ---
+
 
 
 <div style="text-align: center;">
@@ -234,11 +235,9 @@ The code for the different files are depicted below.
 Code for `run.py`
   
 ```python
-from flask import Flask
+from socapp import app
 
-app = Flask(__name__)
-
-import socapp.routes
+app.run(debug=True, port=8888)
 ```
 
 Code for `/socapp/__init__.py`
@@ -584,4 +583,3 @@ Access the repository containing the complete API code by **[clicking here](http
 <br>
 
 I hope this article helps you on your journey to create better RESTful APIs and Web Services and build awesome apps using Python. Some useful resources if you are serious about Flask development include, [The Flask Mega Tutorial!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and [An Introduction to Flask](http://shop.oreilly.com/product/0636920034797.do?cmp=af-prog-books-videos-product_cj_9781491911921_%25zp) both by Miguel Grinberg. Thats all for now folks. See you next time!
-
