@@ -435,7 +435,7 @@ Here we will modularize our existing codebase further making necessary changes a
       |               +---- /monkey
       |                       |
       |                       +---- __init__.py
-      |                       +---- rputes.py
+      |                       +---- routes.py
       +---- run.py
       
   ```
