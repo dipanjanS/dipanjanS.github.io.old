@@ -10,15 +10,20 @@ Technology Enthusiast. Casual Gamer. Lifelong learner. Foodie.
 <br>
 ### More Information
 
-Hi there! I work currently as an IT Engineer at [Intel](http://www.intel.com). The main areas I focus on at work include IT Infrastructure Engineering, Service Management Engineering. Some of the technical domains I work on include Analytics and Enterprise Application Development. My main areas of interest are,
+Hi there! I'm a Data Scientist at [Intel](http://www.intel.com). I focus on building intelligent systems, applying analytics and data science to solve challenging problems for Infrastructure Engineering and Service Management Engineering. My main areas of interest are,
 
- - Statistical Analysis and Inference, Data Analytics & Visualization, Machine Learning
- - Enterprise Application development, Web design & development
- - Data Modelling, Warehousing and Business Intelligence
- - Computer Vision and Image Processng
- - Cloud Computing and Distributed Systems
+- Data Science & Machine Learning
+- Statistical Analysis and Inference
+- Text Analytics, Semantics & Information Retrieval
+- Big Data Analytics and Distributed Systems
+- Enterprise Application design, development and architecture
+- Data Modeling, Warehousing and Business Intelligence
 
-Outside of work, I love reading, writing, learning new things and sharing them with others and watching sitcoms. Feel free to contact me if you have anything interesting to share.
+I've also authored several books on R, Machine Learning, Python & Text Analytics. Currently I'm working on a book based on Social Media Analytics with R.
+
+Outside of work, I'm a Technology and Financial Market Enthusiast. Sitcom and Football Addict. Casual Gamer. Lifelong learner. Foodie.
+
+Feel free to contact me if you have anything interesting to share.
 
 <br>
 ### Contact me
